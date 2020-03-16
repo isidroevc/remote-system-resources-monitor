@@ -16,6 +16,8 @@ pub struct NetStatInfo {
 
 #[derive(Serialize, Deserialize)]
 pub struct StatInfo {
+		node_id: String,
+		community_chain: String,
     total_memory: u64,
     used_memory: u64,
     processors: Vec<f32>,
@@ -115,6 +117,8 @@ pub fn start(configuration: &mut Configuration) {
             });
         }
         let stat_info = StatInfo {
+						node_id: configuration.node_id.clone(),
+						community_chain: configuration.community_chain.clone(),
             total_memory: system.get_total_memory(),
             used_memory: system.get_used_memory(),
             processors: processors_stats,
